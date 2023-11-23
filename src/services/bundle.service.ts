@@ -1,9 +1,11 @@
-import { BUDNLES } from "./bundle.data";
+import { BUNDLES } from "./bundle.data";
 
 export function getBundleData() {
-  return new Promise<typeof BUDNLES>((resolve) => {
+  const delay = Math.random() * 5000;
+
+  return new Promise<typeof BUNDLES>((resolve) => {
     setTimeout(() => {
-      resolve(BUDNLES);
-    }, Math.random() * 1000);
+      resolve(BUNDLES);
+    }, delay);
   });
 }

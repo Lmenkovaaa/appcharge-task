@@ -1,25 +1,10 @@
-import styled from "styled-components";
 import { Bundle } from "./components/Bundle/Bundle";
 import { useBundleData } from "./hooks/useBundleData";
-
-const mobileBreakpoint = "756px";
-
-const AppContainer = styled.div`
-  background: url("/src/assets/main-cover.svg") no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
-  min-height: 100vh;
-  padding-top: 100px;
-  padding-bottom: 100px;
-
-  @media (max-width: ${mobileBreakpoint}) {
-    padding-right: 10px;
-    padding-left: 10px;
-  }
-`;
+import { AppContainer } from "./App.styles";
+import { Spinner } from "./components/Spinner/Spinner";
 
 function App() {
-  const { data } = useBundleData();
+  const { data, isLoading } = useBundleData();
 
   return (
     <AppContainer>
@@ -37,6 +22,7 @@ function App() {
             );
           })
         : null}
+      {isLoading ? <Spinner /> : null}
     </AppContainer>
   );
 }

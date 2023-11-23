@@ -1,4 +1,4 @@
-export const BUDNLES = {
+export const BUNDLES = {
   bundles: [
     {
       id: 10,
@@ -39,7 +39,7 @@ export const BUDNLES = {
       bgImage: "...",
       timeLeftMs: 7200000,
       maxAvailable: 20,
-      available: 15,
+      available: 9,
       price: {
         amount: 149,
         currencySymbol: "$",
@@ -477,7 +477,7 @@ export const BUDNLES = {
       bgImage: "...",
       timeLeftMs: 1089809843,
       maxAvailable: 50,
-      available: 12,
+      available: 6,
       price: {
         amount: 599,
         currencySymbol: "$",
