@@ -1,5 +1,4 @@
 import styled from "styled-components";
-// import "./App.css";
 import { Bundle } from "./components/Bundle/Bundle";
 import { useBundleData } from "./hooks/useBundleData";
 

@@ -4,9 +4,6 @@ export function getBundleData() {
   return new Promise<typeof BUDNLES>((resolve) => {
     setTimeout(() => {
       resolve(BUDNLES);
-    }, Math.random() * 1000); //неважно
+    }, Math.random() * 1000);
   });
 }
-
-//паддинги на мобилке ++
-//CSS модули ++

@@ -1,5 +1,4 @@
 import { ForwardedRef, forwardRef } from "react";
-// import "./BundleItems.css";
 import styled from "styled-components";
 
 const BundleItemsContainer = styled.div`
