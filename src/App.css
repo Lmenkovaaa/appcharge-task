@@ -1,7 +1,0 @@
-.app {
-  background: url("/src/assets/main-cover.svg") no-repeat center center;
-  background-size: cover;
-  min-height: 100vh;
-  padding-top: 100px;
-  padding-bottom: 100px;
-}

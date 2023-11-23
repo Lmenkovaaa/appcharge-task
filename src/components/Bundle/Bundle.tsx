@@ -1,7 +1,78 @@
 import { useRef, useState } from "react";
-import "./Bundle.css";
+import styled from "styled-components";
 import { BundleItems } from "../BundleItems/BundleItems";
 import { BundleInfo } from "../BundleInfo/BundleInfo";
+
+const BundleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 50px;
+  box-sizing: border-box;
+  max-width: 400px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px #7d4f00;
+  font-family: "Roboto", sans-serif;
+  background: repeating-linear-gradient(to left bottom, #c36d1e, #fef295);
+`;
+
+const BundleCover = styled.div`
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  background: url("/src/assets/cover.png") no-repeat center center;
+  background-size: cover;
+  border-radius: 10px;
+  height: 130px;
+`;
+
+const BundleItemsWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+`;
+
+const BundleItemsContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  overflow-x: auto;
+  scrollbar-width: none;
+  display: flex;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+const ButtonScroll = styled.button`
+  position: absolute;
+  height: 100%;
+  top: 0;
+  z-index: 3;
+  background: transparent;
+  font-size: 2rem;
+  color: white;
+  opacity: 0.6;
+  border: 0;
+  cursor: pointer;
+`;
+
+const ButtonScrollLeft = styled(ButtonScroll)`
+  left: 0;
+`;
+
+const ButtonScrollRight = styled(ButtonScroll)`
+  right: 0;
+`;
+
+const BundleSpacer = styled.div`
+  flex-grow: 1;
+`;
 
 type BundleProps = {
   timeLeftMs: number;
@@ -38,9 +109,8 @@ export const Bundle = ({
   };
 
   return (
-    <div className="bundle">
-      <div
-        className="bundle__cover"
+    <BundleContainer>
+      <BundleCover
         onMouseEnter={() => {
           if (products.length > 5) setShowButtons(true);
         }}
@@ -48,28 +118,22 @@ export const Bundle = ({
       >
         {showButtons && (
           <>
-            <button
-              className="bundle__button-scroll  bundle__button-scroll-right"
-              onClick={() => scroll("right")}
-            >
+            <ButtonScrollRight onClick={() => scroll("right")}>
               ▶
-            </button>
-            <button
-              className="bundle__button-scroll  bundle__button-scroll-left"
-              onClick={() => scroll("left")}
-            >
+            </ButtonScrollRight>
+            <ButtonScrollLeft onClick={() => scroll("left")}>
               ◀
-            </button>
+            </ButtonScrollLeft>
           </>
         )}
-        <div className="bundle__items-container" ref={bundleRef}>
-          <div className="bundle__spacer" />
-          <div className="bundle__items-wrapper">
+        <BundleItemsContainer ref={bundleRef}>
+          <BundleSpacer />
+          <BundleItemsWrapper>
             <BundleItems ref={itemsRef} products={products} />
-          </div>
-          <div className="bundle__spacer" />
-        </div>
-      </div>
+          </BundleItemsWrapper>
+          <BundleSpacer />
+        </BundleItemsContainer>
+      </BundleCover>
 
       <BundleInfo
         available={available}
@@ -77,6 +141,6 @@ export const Bundle = ({
         price={price}
         timeLeftMs={timeLeftMs}
       />
-    </div>
+    </BundleContainer>
   );
 };

@@ -1,5 +1,29 @@
 import { ForwardedRef, forwardRef } from "react";
-import "./BundleItems.css";
+// import "./BundleItems.css";
+import styled from "styled-components";
+
+const BundleItemsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+  width: min-content;
+`;
+
+const BundleItem = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1px;
+  align-items: center;
+  text-align: center;
+`;
+
+const BundleItemText = styled.span`
+  font-size: 1rem;
+  font-weight: 700;
+  color: ${(props) => props.color};
+`;
 
 type Product = {
   id: number;
@@ -17,23 +41,23 @@ type BundleItemsProps = {
 export const BundleItems = forwardRef(
   (products: BundleItemsProps, ref: ForwardedRef<HTMLDivElement>) => {
     return (
-      <div ref={ref} className="bundle__items">
+      <BundleItemsContainer ref={ref}>
         {products.products.map((product) => {
           return (
-            <div className="bundle__item" key={product.id}>
+            <BundleItem key={product.id}>
               <img
                 width={65}
                 height={65}
                 src={`/src/assets/${product.productImage}`}
                 alt={product.name}
               />
-              <span style={{ color: product.productTextColor }}>
+              <BundleItemText color={product.productTextColor}>
                 {product.amount}
-              </span>
-            </div>
+              </BundleItemText>
+            </BundleItem>
           );
         })}
-      </div>
+      </BundleItemsContainer>
     );
   },
 );
