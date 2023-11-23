@@ -15,9 +15,10 @@ The source directory contains all the source code for the bundle. Here, I decide
 
 - <b>assets</b> - the assets directory contains all static files like images
 - <b>components</b> - the components directory cantains the React components used to build user interface for the bundle.
-  - <b>Bundle</b> - is a main Bundle Component
-  - <b>BundleInfo</b> - is a child component for the Bundle Component that provide information for specific bundles.
-  - <b>BundleItems</b> - is a child component for the Bundle Component that provides all products that belongs to the specific bundle.
+  - <b>Bundle</b> - the main Bundle Component
+    - <b>BundleInfo</b> - the child component for the Bundle Component that provide information for specific bundles.
+    - <b>BundleItems</b> - the child component for the Bundle Component that provides all products that belongs to the specific bundle.
+  - <b>Spinner</b> - the spinner used to indicate loading bundles.
 - <b>hooks</b> - сontains custom React hooks for fetching and managing data related to bundles.
 - <b>services</b> - сonsists of service files that handle the business logic and API calls.
 - <b>utils</b> - contains utility functions for date and time manipulation.
