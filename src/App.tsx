@@ -8,21 +8,21 @@ function App() {
 
   return (
     <AppContainer>
-      {data
-        ? data.bundles.map((bundle) => {
-            return (
-              <Bundle
-                key={bundle.id}
-                timeLeftMs={bundle.timeLeftMs}
-                available={bundle.available}
-                maxAvailable={bundle.maxAvailable}
-                price={bundle.price}
-                products={bundle.products}
-              />
-            );
-          })
-        : null}
       {isLoading ? <Spinner /> : null}
+      {data?.bundles.map(
+        ({ id, timeLeftMs, available, maxAvailable, price, products }) => {
+          return (
+            <Bundle
+              key={id}
+              timeLeftMs={timeLeftMs}
+              available={available}
+              maxAvailable={maxAvailable}
+              price={price}
+              products={products}
+            />
+          );
+        },
+      )}
     </AppContainer>
   );
 }

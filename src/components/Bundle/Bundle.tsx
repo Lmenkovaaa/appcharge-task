@@ -4,6 +4,8 @@ import { BundleInfo } from "./BundleInfo/BundleInfo";
 import * as S from "./Bundle.styles";
 import { BundleProps } from "./Bundle.types";
 
+const MIN_INTEMS_FOR_SCROLL_DISPLAY = 5;
+
 export const Bundle = ({
   timeLeftMs,
   maxAvailable,
@@ -14,6 +16,9 @@ export const Bundle = ({
   const [showButtons, setShowButtons] = useState(false);
   const bundleRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<HTMLDivElement>(null);
+
+  const shouldShowScrollButtons =
+    products.length > MIN_INTEMS_FOR_SCROLL_DISPLAY;
 
   const scroll = (direction: "left" | "right") => {
     const { current } = bundleRef;
@@ -27,9 +32,7 @@ export const Bundle = ({
   return (
     <S.BundleContainer>
       <S.BundleCover
-        onMouseEnter={() => {
-          if (products.length > 5) setShowButtons(true);
-        }}
+        onMouseEnter={() => shouldShowScrollButtons && setShowButtons(true)}
         onMouseLeave={() => setShowButtons(false)}
       >
         {showButtons && (
